@@ -11,6 +11,8 @@ import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Texts;
 import org.spongepowered.api.util.command.spec.CommandSpec;
 
+import static org.spongepowered.api.util.command.args.GenericArguments.playerOrSource;
+
 @Plugin(id = "library", name = "Library", version = "1.0")
 public class Library {
     @Inject public Game game;
@@ -20,7 +22,12 @@ public class Library {
 
     private final CommandSpec libraryCommandSpec = CommandSpec.builder()
             .description(Texts.of("Adds the held book to the library. If another book with the same author and title are present in the library it will append '.#' to the end of the title in the library only."))
-            .child(new AddCommand().getCommandSpec(), "add")
+            .child(CommandSpec.builder()
+                    .description(Texts.of("Adds the held book to the library. If another book with the same author and title are present in the library it will append '.#' to the end of the title in the library only."))
+                    .permission("library.command.add")
+                    .arguments(playerOrSource(Texts.of("player"), game))
+                    .executor(new AddCommand())
+                    .build(), "add")
             .build();
 
     @Subscribe

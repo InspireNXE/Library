@@ -1,4 +1,4 @@
-package org.inspirenxe.lore;
+package org.inspirenxe.library;
 
 public class Configuration {
 

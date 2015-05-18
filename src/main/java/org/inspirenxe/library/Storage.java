@@ -1,4 +1,4 @@
-package org.inspirenxe.lore;
+package org.inspirenxe.library;
 
 import org.spongepowered.api.data.DataContainer;
 import org.spongepowered.api.item.inventory.ItemStack;
@@ -24,7 +24,7 @@ public class Storage {
         return null;
     }
 
-    public static Map getLibrary() {
+    public static Map<String, DataContainer> getLibrary() {
         return Collections.unmodifiableMap(LIBRARY_MAP);
     }
 }
